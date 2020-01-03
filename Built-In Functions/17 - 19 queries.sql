@@ -1,0 +1,23 @@
+SELECT ProductName,
+ OrderDate,
+  DATEADD(DAY, 3, OrderDate) AS PayDue,
+   DATEADD(MONTH, 1, OrderDate) AS DeliverDue
+ FROM Orders;
+
+ CREATE TABLE People(
+ Id INT PRIMARY KEY IDENTITY,
+ [Name] NVARCHAR(MAX) NOT NULL,
+ BirthDate DATETIME NOT NULL
+ );
+ 
+INSERT INTO People VALUES 
+('Mutter', '2014-07-22T20:40:45'),
+('Rter', '1774-07-22T21:40:45'),
+('JOHNATANBANDERAS', '2017-11-22T09:40:45.333');
+
+SELECT [Name],
+ DATEDIFF(YEAR, BirthDate, GETDATE()) AS AgeInYears,
+ DATEDIFF(MONTH, BirthDate, GETDATE()) AS AgeInMonths,
+ DATEDIFF(DAY, BirthDate, GETDATE()) AS AgeInDays,
+ DATEDIFF(MINUTE, BirthDate, GETDATE()) AS AgeInMinutes 
+ FROM People
